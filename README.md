@@ -8,6 +8,26 @@ learn about typhoon
 @Params: t, callback  
 @Response: 
 ```
+//model
+"typhoon": [
+  @id           int 
+  @name         string
+  @chineseName  string
+  @no           int
+  @no           string
+  @fullNo       int
+  @nameFrom     string
+]  
+
+//struct
+typhoon_jsons_list_default(
+  ( {
+      "typhoonList": [model1, model2, ...]
+     }
+  )
+)
+
+//sample 
 typhoon_jsons_list_default(({"typhoonList":[[2508964,"KAJIKI","剑鱼",1914,"1914",20190015,"名字来源于：日本 意为：剑鱼星座\r\n","start"],[2509073,"LINGLING","玲玲",1913,"1913",20190016,"名字来源于：中国香港 意为：女孩儿名\r\n","start"],[2506527,"PODUL","杨柳",1912,"1912",null,"名字来源于：朝鲜 意为：一种在城乡均有种植的树，闷热天气时人们喜欢在其树荫下休息聊天\r\n","stop"],[2503517,"BAILU","白鹿",1911,"1911",null,"一种动物","stop"],[2488675,"KROSA","罗莎",1910,"1910",null,"名字来源于：柬埔寨 意为：鹤\r\n","stop"],[2490819,"nameless","NAMELESS",null,"20190012",20190012,null,"stop"],[2485178,"LEKIMA","利奇马",1909,"1909",20190010,"名字来源于：越南 意为：一种水果\r\n","stop"],[2482798,"FRANCISCO","范斯高",1908,"1908",null,"名字来源于：美国 意为：男子名（Chamarro 语）\r\n","stop"],[2480955,"WIPHA","韦帕",1907,"1907",20190008,"名字来源于：泰国 意为：女士名字\r\n","stop"],[2480604,"NARI","百合",1906,"1906",null,"名字来源于：韩国 意为：一种花\r\n","stop"],[2477927,"nameless","NAMELESS",null,"20190006",20190006,null,"stop"],[2476955,"DANAS","丹娜丝",1905,"1905",20190005,"名字来源于：菲律宾 意为：经历\r\n","stop"],[2475877,"MUN","木恩",1904,"1904",20190004,"六月（Yap语）","stop"],[2475835,"SEPAT","圣帕",1903,"1903",null,"名字来源于：马来西亚 意为：一种淡水鱼\r\n","stop"],[2470478,"WUTIP","蝴蝶",1902,"1902",null,"名字来源于：中国澳门 意为：一种昆虫\r\n","stop"],[2468535,"PABUK","帕布",1901,"1901",20180035,"名字来源于：老挝 意为：大淡水鱼\r\n","stop"]]}))
 
 ```
