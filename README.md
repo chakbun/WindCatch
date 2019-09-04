@@ -4,9 +4,11 @@ learn about typhoon
 ## API 
 > from [中央气象台台风网][1] 
 ### list 
-@URL: http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default  
-@Params: t, callback  
-@Response: 
+* URL: http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default  
+* Params 
+  * t 
+  * callback  
+* Response  
 ```
 //model
 "typhoon": [
