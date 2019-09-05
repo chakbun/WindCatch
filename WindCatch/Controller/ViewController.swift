@@ -18,8 +18,16 @@ class ViewController: UIViewController {
             switch responseString.result {
             case .success:
                 if let data = responseString.data {
-                    var jsonMsg = String.init(data: data, encoding: .utf8) as? String
-                    print(jsonMsg);
+                    var jsonMsg: String = String.init(data: data, encoding: .utf8) ?? ""
+                    jsonMsg = jsonMsg.replacingOccurrences(of: "typhoon_jsons_list_default((", with: "")
+                    jsonMsg = jsonMsg.replacingOccurrences(of: "))", with: "")
+                    var jsonData = jsonMsg.data(using: .utf8) as! Data
+                    do {
+                        var responseDic = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+                        print(responseDic)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             case let .failure(error):
                 print(error)
