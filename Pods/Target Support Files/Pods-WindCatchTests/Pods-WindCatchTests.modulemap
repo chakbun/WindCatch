@@ -1,0 +1,6 @@
+framework module Pods_WindCatchTests {
+  umbrella header "Pods-WindCatchTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
