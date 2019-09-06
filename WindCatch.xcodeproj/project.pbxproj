@@ -19,6 +19,8 @@
 		DF29F677231FF9C9009B3CBC /* WindCatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F676231FF9C9009B3CBC /* WindCatchUITests.swift */; };
 		DF29F689231FFAD3009B3CBC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DF29F688231FFAD3009B3CBC /* README.md */; };
 		DF29F68B231FFE37009B3CBC /* ZBGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F68A231FFE37009B3CBC /* ZBGlobal.swift */; };
+		DF29F68E2322A728009B3CBC /* WCHttpRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F68D2322A728009B3CBC /* WCHttpRequestManager.swift */; };
+		DF29F6902322AD14009B3CBC /* WCTyphoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		DF29F678231FF9C9009B3CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF29F688231FFAD3009B3CBC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		DF29F68A231FFE37009B3CBC /* ZBGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZBGlobal.swift; sourceTree = "<group>"; };
+		DF29F68D2322A728009B3CBC /* WCHttpRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHttpRequestManager.swift; sourceTree = "<group>"; };
+		DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTyphoon.swift; sourceTree = "<group>"; };
 		E541CA80344AF5AB279C8CFB /* Pods_WindCatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindCatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,6 +145,7 @@
 		DF29F655231FF9C9009B3CBC /* WindCatch */ = {
 			isa = PBXGroup;
 			children = (
+				DF29F68C2322A6D5009B3CBC /* Utils */,
 				DF29F688231FFAD3009B3CBC /* README.md */,
 				DF29F686231FFA85009B3CBC /* Global */,
 				DF29F684231FFA5F009B3CBC /* Controller */,
@@ -201,6 +206,15 @@
 				DF29F65F231FF9C9009B3CBC /* LaunchScreen.storyboard */,
 			);
 			path = sb;
+			sourceTree = "<group>";
+		};
+		DF29F68C2322A6D5009B3CBC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DF29F68D2322A728009B3CBC /* WCHttpRequestManager.swift */,
+				DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +442,8 @@
 				DF29F659231FF9C9009B3CBC /* ViewController.swift in Sources */,
 				DF29F68B231FFE37009B3CBC /* ZBGlobal.swift in Sources */,
 				DF29F657231FF9C9009B3CBC /* AppDelegate.swift in Sources */,
+				DF29F6902322AD14009B3CBC /* WCTyphoon.swift in Sources */,
+				DF29F68E2322A728009B3CBC /* WCHttpRequestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

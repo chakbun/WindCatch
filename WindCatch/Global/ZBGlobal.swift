@@ -8,6 +8,6 @@
 
 import Foundation
 
-public func ZBLog<T>(message: T, file: String=#file, method: String=#function, line: Int=#line)->Void {
+public func ZBLog<T>(_ message: T, file: String=#file, method: String=#function, line: Int=#line)->Void {
     print("\((file as NSString).lastPathComponent)[\(line)], \(method): \(message)")
 }
