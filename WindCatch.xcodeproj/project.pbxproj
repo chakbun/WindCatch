@@ -145,6 +145,7 @@
 		DF29F655231FF9C9009B3CBC /* WindCatch */ = {
 			isa = PBXGroup;
 			children = (
+				DF29F691232356C1009B3CBC /* View */,
 				DF29F68C2322A6D5009B3CBC /* Utils */,
 				DF29F688231FFAD3009B3CBC /* README.md */,
 				DF29F686231FFA85009B3CBC /* Global */,
@@ -215,6 +216,13 @@
 				DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DF29F691232356C1009B3CBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
