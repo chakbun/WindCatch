@@ -15,12 +15,19 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         weak var weakSelf = self
         WCHttpRequestManager.shareManager.listTyphoonWith { (typhoons, error) in
-            ZBLog(typhoons)
             weakSelf?.typhoonList = typhoons
             weakSelf?.tableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        
+        if controller is WCMapController {
+            let mapController: WCMapController = controller as! WCMapController
+            mapController.typhoon = sender as? WCTyphoon
         }
     }
 
@@ -36,8 +43,18 @@ extension ViewController {
         let typhoonModel = self.typhoonList?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "WCTyphoonListCell", for: indexPath)
         let nameLabel: UILabel = cell.viewWithTag(1) as! UILabel
-        nameLabel.text = typhoonModel?.chineseName ?? "Unknow"
+        let nameText = typhoonModel?.chineseName ?? "Unknow"
+        let indexText = typhoonModel?.noString ?? "Unknow"
+        nameLabel.text = nameText + "[\(indexText)]"
         return cell
+    }
+}
+
+// MARK: - TableView Delegate
+extension ViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let typhoonModel = self.typhoonList?[indexPath.row]
+        self .performSegue(withIdentifier: "showMapSegue", sender: typhoonModel)
     }
 }
 
