@@ -49,7 +49,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Typhoons" id="9en-2B-dfb"/>
                     <connections>
-                        <segue destination="RkZ-nr-xo7" kind="showDetail" identifier="showMapSegue" id="0B6-gM-Zp4"/>
+                        <segue destination="RkZ-nr-xo7" kind="show" identifier="showMapSegue" id="0B6-gM-Zp4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kp5-lh-7i2" userLabel="First Responder" sceneMemberID="firstResponder"/>

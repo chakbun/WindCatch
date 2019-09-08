@@ -17,6 +17,7 @@ class WCTyphoon {
     var fullNo: Int?
     var nameDescription: String?
     var status: String?
+    var details: [WCTyphoonDetail]?
     
     init(id: Int, name: String) {
         self.id = id
@@ -28,7 +29,7 @@ class WCTyphoon {
     }
     
     func updateFrom(json: NSArray) -> Void {
-        guard json.count == 8 else {
+        guard json.count >= 8 else {
             ZBLog("json format Error")
             return
         }
@@ -40,5 +41,27 @@ class WCTyphoon {
         self.fullNo = json[5] as? Int
         self.nameDescription = json[6] as? String
         self.status = json[7] as? String
+        
+        if json.count > 8 {
+            var detailsList: [WCTyphoonDetail] = []
+            let detailJson = json[8] as? NSArray
+            for detail in detailJson! {
+                let array = detail as! NSArray
+                let dID = array[0] as! Int;
+                let time = array[1] as! String;
+                let ts = array[2] as! Int;
+                let type = array[3] as! String;
+                let longitude = array[4] as! Double;
+                let latitude = array[5] as! Double;
+                let press = array[6] as! Int;
+                let windspeed = array[7] as! Int;
+                let direct = array[8] as! String;
+                let moveSpeed = array[9] as! Int;
+                
+                let model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed)
+                detailsList.append(model)
+            }
+            self.details = detailsList
+        }
     }
 }

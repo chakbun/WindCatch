@@ -12,13 +12,13 @@ import Alamofire
 class WCHttpRequestManager {
     static let shareManager: WCHttpRequestManager = WCHttpRequestManager()
     
-    func loadTyphoonDetailWit(id: Int, completed: @escaping (WCTyphoon?, NSError)->Void) -> Void {
+    func loadTyphoonDetailWith(id: Int, completed: @escaping (WCTyphoon?, NSError?)->Void) -> Void {
         let actionName: String = "view_\(id)"
         Session.default.request("http://typhoon.nmc.cn/weatherservice/typhoon/jsons/\(actionName)", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
             case .success:
                 var responseData2String: String = String.init(data: response.data!, encoding: .utf8) ?? ""
-                ZBLog("rawJson\(responseData2String)")
+//                ZBLog("rawJson\(responseData2String)")
                 responseData2String = responseData2String.replacingOccurrences(of: "typhoon_jsons_\(actionName)(", with: "")
                 responseData2String = responseData2String.replacingOccurrences(of: ")", with: "")
                 let responseDataAfterFilter = responseData2String.data(using: .utf8)
@@ -27,7 +27,10 @@ class WCHttpRequestManager {
                         let jsonDictionary = try JSONSerialization.jsonObject(with: resData, options: []) as? [String: Any]
                         if let jsonDic = jsonDictionary {
                             let typhoonsJson: NSArray = jsonDic["typhoon"] as! NSArray
+                            let model = WCTyphoon();
+                            model.updateFrom(json: typhoonsJson)
                             ZBLog(typhoonsJson)
+                            completed(model, nil)
                         }else {
                             completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil));
                         }
