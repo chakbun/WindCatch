@@ -17,30 +17,37 @@ class WCHttpRequestManager {
         Session.default.request("http://typhoon.nmc.cn/weatherservice/typhoon/jsons/\(actionName)", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
             case .success:
-                var responseData2String: String = String.init(data: response.data!, encoding: .utf8) ?? ""
-//                ZBLog("rawJson\(responseData2String)")
-                responseData2String = responseData2String.replacingOccurrences(of: "typhoon_jsons_\(actionName)(", with: "")
-                responseData2String = responseData2String.replacingOccurrences(of: ")", with: "")
-                let responseDataAfterFilter = responseData2String.data(using: .utf8)
-                if let resData = responseDataAfterFilter {
+                if let responseData = response.data {
+                    guard var responseString = String.init(data: responseData, encoding: .utf8) else {
+                        ZBLog("responseData is null")
+                        completed(nil, NSError.init(domain: "responseData is null", code: -1, userInfo: nil))
+                        return
+                    }
+                    ZBLog("rawJson\(responseString)")
+                    responseString = responseString.replacingOccurrences(of: "typhoon_jsons_\(actionName)(", with: "")
+                    responseString = responseString.replacingOccurrences(of: ")", with: "")
+                    
+                    guard let responseData = responseString.data(using: .utf8) else {
+                        ZBLog("responseString 2 data error")
+                        completed(nil, NSError.init(domain: "responseString 2 data error", code: -1, userInfo: nil))
+                        return
+                    } 
                     do {
-                        let jsonDictionary = try JSONSerialization.jsonObject(with: resData, options: []) as? [String: Any]
-                        if let jsonDic = jsonDictionary {
-                            let typhoonsJson: NSArray = jsonDic["typhoon"] as! NSArray
-                            let model = WCTyphoon();
-                            model.updateFrom(json: typhoonsJson)
-                            ZBLog(typhoonsJson)
-                            completed(model, nil)
-                        }else {
-                            completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil));
+                        guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
+                            completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil))
+                            return
                         }
+                        let typhoonsJson: NSArray = json["typhoon"] as! NSArray
+                        let model = WCTyphoon();
+                        model.updateFrom(json: typhoonsJson)
+                        ZBLog(typhoonsJson)
+                        completed(model, nil)
                     } catch {
                         completed(nil, error as NSError);
                     }
                 }else {
-                    completed(nil, NSError.init(domain: "ResponseData Format Err", code: -2, userInfo: nil));
+                    completed(nil, NSError.init(domain: "responseData is null", code: -1, userInfo: nil))
                 }
-
             case.failure(let error):
                 completed(nil, error as NSError);
             }
@@ -52,32 +59,35 @@ class WCHttpRequestManager {
             switch response.result {
             case .success:
                 if let responseData = response.data {
-                    var responseData2String: String = String.init(data: responseData, encoding: .utf8) ?? ""
-                    ZBLog("rawJson\(responseData2String)")
-                    responseData2String = responseData2String.replacingOccurrences(of: "typhoon_jsons_list_default((", with: "")
-                    responseData2String = responseData2String.replacingOccurrences(of: "))", with: "")
-                    let responseDataAfterFilter = responseData2String.data(using: .utf8)
+                    guard var responseString = String.init(data: responseData, encoding: .utf8) else {
+                        ZBLog("responseData is null")
+                        completed(nil, NSError.init(domain: "responseData is null", code: -1, userInfo: nil))
+                        return
+                    }
+                    ZBLog("rawJson\(responseString)")
+                    responseString = responseString.replacingOccurrences(of: "typhoon_jsons_list_default((", with: "")
+                    responseString = responseString.replacingOccurrences(of: "))", with: "")
                     
-                    if let resData = responseDataAfterFilter {
-                        do {
-                            let jsonDictionary = try JSONSerialization.jsonObject(with: resData, options: []) as? [String: Any]
-                            if let jsonDic = jsonDictionary {
-                                let typhoonsJson: NSArray = jsonDic["typhoonList"] as! NSArray
-                                var result: [WCTyphoon] = []
-                                for typhoonJson in typhoonsJson {
-                                    let model = WCTyphoon();
-                                    model.updateFrom(json: typhoonJson as! NSArray)
-                                    result.append(model)
-                                }
-                                completed(result, nil);
-                            }else {
-                                completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil));
-                            }
-                        } catch {
-                            completed(nil, error as NSError);
+                    guard let responseData = responseString.data(using: .utf8) else {
+                        ZBLog("responseString 2 data error")
+                        completed(nil, NSError.init(domain: "responseString 2 data error", code: -1, userInfo: nil))
+                        return
+                    }
+                    do {
+                        guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
+                            completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil))
+                            return
                         }
-                    }else {
-                        completed(nil, NSError.init(domain: "ResponseData Format Err", code: -2, userInfo: nil));
+                        let typhoonsJson: NSArray = json["typhoonList"] as! NSArray
+                        var result: [WCTyphoon] = []
+                        for typhoonJson in typhoonsJson {
+                            let model = WCTyphoon();
+                            model.updateFrom(json: typhoonJson as! NSArray)
+                            result.append(model)
+                        }
+                        completed(result, nil);
+                    } catch {
+                        completed(nil, error as NSError);
                     }
                     
                 }
