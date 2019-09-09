@@ -17,14 +17,16 @@ class WCMapController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tpMapView.delegate = self
         
+        weak var weakSelf = self
         
-        if let tp = typhoon {
-            WCHttpRequestManager.shareManager.loadTyphoonDetailWith(id: tp.id) { (typhoon, error) in
-                let details = typhoon?.details
-                let coordinates: [CLLocationCoordinate2D] = []
-                if let details = details {
-                    MKPolyline.init(coordinates: coordinates, count: details.count)
+        if let typhoon = typhoon {
+            WCHttpRequestManager.shareManager.loadTyphoonDetailWith(id: typhoon.id) { (typhoon, error) in
+                if let coordinateArray = typhoon?.coordinateArray {
+                    let polyLine = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
+                    weakSelf?.tpMapView.centerCoordinate = coordinateArray[0]
+                    weakSelf?.tpMapView.addOverlay(polyLine)
                 }
             }
         }
@@ -34,8 +36,12 @@ class WCMapController: UIViewController {
 
 extension WCMapController: MKMapViewDelegate {
     
-//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//    
-//    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let render = MKPolylineRenderer.init(overlay: overlay)
+        render.lineWidth = 2.0
+        render.strokeColor = .red
+        render.lineDashPattern = [1, 2, 1]
+        return render
+    }
     
 }

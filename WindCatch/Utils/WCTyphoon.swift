@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class WCTyphoon {
     var id: Int
@@ -18,6 +19,18 @@ class WCTyphoon {
     var nameDescription: String?
     var status: String?
     var details: [WCTyphoonDetail]?
+    
+    var coordinateArray: [CLLocationCoordinate2D]? {
+        if let details = details {
+            var array: [CLLocationCoordinate2D] = []
+            for detail in details {
+                array.append(CLLocationCoordinate2D.init(latitude: detail.latitude, longitude: detail.longitude))
+            }
+            return array
+        }else {
+            return nil
+        }
+    }
     
     init(id: Int, name: String) {
         self.id = id
@@ -42,26 +55,28 @@ class WCTyphoon {
         self.nameDescription = json[6] as? String
         self.status = json[7] as? String
         
-        if json.count > 8 {
-            var detailsList: [WCTyphoonDetail] = []
-            let detailJson = json[8] as? NSArray
-            for detail in detailJson! {
-                let array = detail as! NSArray
-                let dID = array[0] as! Int;
-                let time = array[1] as! String;
-                let ts = array[2] as! Int;
-                let type = array[3] as! String;
-                let longitude = array[4] as! Double;
-                let latitude = array[5] as! Double;
-                let press = array[6] as! Int;
-                let windspeed = array[7] as! Int;
-                let direct = array[8] as! String;
-                let moveSpeed = array[9] as! Int;
-                
-                let model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed)
-                detailsList.append(model)
-            }
-            self.details = detailsList
+        guard json.count > 8 else {
+            return
         }
+        
+        var detailsList: [WCTyphoonDetail] = []
+        let detailJson = json[8] as? NSArray
+        for detail in detailJson! {
+            let array = detail as! NSArray
+            let dID = array[0] as! Int;
+            let time = array[1] as! String;
+            let ts = array[2] as! Int;
+            let type = array[3] as! String;
+            let longitude = array[4] as! Double;
+            let latitude = array[5] as! Double;
+            let press = array[6] as! Int;
+            let windspeed = array[7] as! Int;
+            let direct = array[8] as! String;
+            let moveSpeed = array[9] as! Int;
+            
+            let model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed)
+            detailsList.append(model)
+        }
+        self.details = detailsList
     }
 }

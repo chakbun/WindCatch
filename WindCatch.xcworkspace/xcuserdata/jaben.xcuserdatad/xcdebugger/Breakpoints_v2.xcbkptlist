@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WindCatch/Utils/WCTyphoon.swift"
-            timestampString = "589731706.0366991"
+            filePath = "WindCatch/Controller/WCMapController.swift"
+            timestampString = "589733403.46998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "updateFrom(json:)"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "mapView(_:rendererFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WindCatch/Utils/WCTyphoon.swift"
-            timestampString = "589731706.037644"
+            filePath = "WindCatch/Controller/WCMapController.swift"
+            timestampString = "589733403.470322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "updateFrom(json:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
