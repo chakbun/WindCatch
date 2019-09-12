@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+
+
 class WCTyphoon {
     var id: Int
     var name: String
