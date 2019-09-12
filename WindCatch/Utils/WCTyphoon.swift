@@ -52,7 +52,7 @@ class WCTyphoon {
         self.name = json[1] as! String
         self.chineseName = json[2] as? String
         self.no = json[3] as? Int
-        self.noString = json[4] as? String
+        self.noString = "\(json[4])"
         self.fullNo = json[5] as? Int
         self.nameDescription = json[6] as? String
         self.status = json[7] as? String

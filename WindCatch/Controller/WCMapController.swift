@@ -13,6 +13,7 @@ class WCMapController: UIViewController {
     
     var typhoon: WCTyphoon?
 
+    @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var tpMapView: MKMapView!
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class WCMapController: UIViewController {
         weak var weakSelf = self
         
         if let typhoon = typhoon {
+            self.title = typhoon.chineseName
             WCHttpRequestManager.shareManager.loadTyphoonDetailWith(id: typhoon.id) { (typhoon, error) in
                 if let coordinateArray = typhoon?.coordinateArray {
                     let polyLine = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
@@ -35,6 +37,11 @@ class WCMapController: UIViewController {
                         annotation.title = detail.time
                         weakSelf?.tpMapView .addAnnotation(annotation)
                     }
+                    weakSelf?.introTextView.text = "名字: \(typhoon?.name ?? "")\n"
+                    weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "中文: \(typhoon?.chineseName ?? "")\n"
+                    weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "来源: \(typhoon?.nameDescription ?? "")"
+                    weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "编号: \(typhoon?.noString ?? "")\n"
+                    weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "状态: \(typhoon?.status ?? "")\n"
                 }
             }
         }
@@ -42,6 +49,7 @@ class WCMapController: UIViewController {
 }
 
 extension WCMapController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let render = MKPolylineRenderer.init(overlay: overlay)
         render.lineWidth = 2.0
