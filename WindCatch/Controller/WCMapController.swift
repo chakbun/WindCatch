@@ -31,11 +31,16 @@ class WCMapController: UIViewController {
                     weakSelf?.tpMapView.addOverlay(polyLine)
                 }
                 if let details = typhoon?.details {
+                    
+                    let dateFormat = DateFormatter.init()
+                    dateFormat.setLocalizedDateFormatFromTemplate("MM-dd HH:mm")
+                    
                     for detail in details {
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
-                        annotation.title = detail.time
-                        weakSelf?.tpMapView .addAnnotation(annotation)
+                        let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
+                        annotation.title = dateFormat.string(from: date)
+                        weakSelf?.tpMapView.addAnnotation(annotation)
                     }
                     weakSelf?.introTextView.text = "名字: \(typhoon?.name ?? "")\n"
                     weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "中文: \(typhoon?.chineseName ?? "")\n"
