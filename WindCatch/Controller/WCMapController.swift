@@ -32,21 +32,27 @@ class WCMapController: UIViewController {
                 }
                 if let details = typhoon?.details {
                     
-                    let dateFormat = DateFormatter.init()
-                    dateFormat.setLocalizedDateFormatFromTemplate("MM-dd HH:mm")
-                    
-                    for detail in details {
-                        let annotation = MKPointAnnotation()
-                        annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
-                        let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
-                        annotation.title = dateFormat.string(from: date)
-                        weakSelf?.tpMapView.addAnnotation(annotation)
-                    }
                     weakSelf?.introTextView.text = "名字: \(typhoon?.name ?? "")\n"
                     weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "中文: \(typhoon?.chineseName ?? "")\n"
                     weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "来源: \(typhoon?.nameDescription ?? "")"
                     weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "编号: \(typhoon?.noString ?? "")\n"
                     weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "状态: \(typhoon?.status ?? "")\n"
+                    
+                    let dateFormat = DateFormatter.init()
+                    dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
+                    for (index, detail) in details.enumerated() {
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
+                        let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
+                        annotation.title = dateFormat.string(from: date)
+                        annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed), 方向:\(detail.direct)"
+                        weakSelf?.tpMapView.addAnnotation(annotation)
+                        if index == 0 {
+                            dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
+                            let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
+                            weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "开始: \(dateFormat.string(from: date))\n"
+                        }
+                    }
                 }
             }
         }
