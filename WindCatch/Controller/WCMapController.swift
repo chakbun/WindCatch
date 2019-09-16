@@ -45,7 +45,7 @@ class WCMapController: UIViewController {
                         annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
                         let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
                         annotation.title = dateFormat.string(from: date)
-                        annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed), 方向:\(detail.direct)"
+                        annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed), 方向:\(detail.directMsg)"
                         weakSelf?.tpMapView.addAnnotation(annotation)
                         if index == 0 {
                             dateFormat.dateFormat = "YYYY-MM-dd HH:mm"

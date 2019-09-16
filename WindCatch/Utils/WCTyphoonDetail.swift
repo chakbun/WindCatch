@@ -8,6 +8,8 @@
 
 import Foundation
 
+private let directMapping: [String:String] = ["E": "东","W": "西","N": "北","S": "南"]
+
 struct WCTyphoonDetail {
     var id: Int
     var time: String
@@ -19,4 +21,15 @@ struct WCTyphoonDetail {
     var airPress: Int
     var windSpeed: Int
     var moveSpeed: Int
+    
+    var directMsg: String {
+        var direction = ""
+        let directArray = Array(direct)
+        for letter in directArray {
+            direction += directMapping["\(letter)"] ?? ""
+        }
+        return direction
+    }
 }
+
+
