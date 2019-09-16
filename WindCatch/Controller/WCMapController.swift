@@ -45,14 +45,14 @@ class WCMapController: UIViewController {
                     for (index, detail) in details.enumerated() {
                         let annotation = WCPointAnnotation()
                         annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
-                        let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
+                        let date = Date.init(timeIntervalSince1970: (Double(detail.ts!)/1000.0))
                         annotation.title = dateFormat.string(from: date)
-                        annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed), 方向:\(detail.directMsg)"
+                        annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed!), 方向:\(detail.directMsg)"
                         annotation.typhoonDetail = detail
                         weakSelf?.tpMapView.addAnnotation(annotation)
                         if index == 0 {
                             dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
-                            let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
+                            let date = Date.init(timeIntervalSince1970: (Double(detail.ts!)/1000.0))
                             weakSelf?.introTextView.text = (weakSelf?.introTextView.text)! + "开始: \(dateFormat.string(from: date))\n"
                         }
                     }

@@ -75,6 +75,7 @@ class WCTyphoon {
             let windspeed = array[7] as! Int
             let direct = array[8] as! String
             let moveSpeed = array[9] as! Int
+            let dictionary = array[11] as! NSDictionary
             
             let model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed)
             detailsList.append(model)
