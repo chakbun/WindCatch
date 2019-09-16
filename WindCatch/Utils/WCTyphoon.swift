@@ -85,9 +85,9 @@ class WCTyphoon {
                 let hourLater = predictModel[0] as! Int
                 let preLongitude = predictModel[2] as! Double
                 let preLatitude = predictModel[3] as! Double
-                let prePress = array[4] as! Int
-                let preWindspeed = array[5] as! Int
-                let preType = array[7] as! String
+                let prePress = predictModel[4] as! Int
+                let preWindspeed = predictModel[5] as? Int ?? 1
+                let preType = predictModel[7] as! String
                 let preModel = WCTyphoonDetail.init(id: nil, time: "", ts: nil, type: preType, longitude: preLongitude, latitude: preLatitude, direct: nil, airPress: prePress, windSpeed: preWindspeed, moveSpeed: nil, predictArray: nil)
                 model.predictArray?.append(preModel)
             }

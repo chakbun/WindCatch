@@ -97,6 +97,19 @@ extension WCMapController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let pointAnnotation = view.annotation as? WCPointAnnotation {
             ZBLog("model = \(pointAnnotation.typhoonDetail!.directMsg)")
+            if let predictDirectPath = self.predictDirectPath {
+                mapView.removeOverlay(predictDirectPath)
+            }
+            
+            if let predictArray = pointAnnotation.typhoonDetail?.predictArray {
+                var coordinateArray: [CLLocationCoordinate2D] = []
+                for detail in predictArray {
+                    coordinateArray.append(CLLocationCoordinate2D.init(latitude: detail.latitude, longitude: detail.longitude))
+                }
+                self.predictDirectPath = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
+                mapView.setRegion(MKCoordinateRegion.init(center: coordinateArray.last!, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
+                mapView.addOverlay(self.predictDirectPath!)
+            }
         }
     }
     
