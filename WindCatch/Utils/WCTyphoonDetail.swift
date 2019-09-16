@@ -21,6 +21,7 @@ struct WCTyphoonDetail {
     var airPress: Int
     var windSpeed: Int
     var moveSpeed: Int?
+    var predictArray: [WCTyphoonDetail]?
     
     var directMsg: String {
         var direction = ""
