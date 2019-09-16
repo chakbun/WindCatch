@@ -12,6 +12,8 @@ import MapKit
 class WCMapController: UIViewController {
     
     var typhoon: WCTyphoon?
+    var predictDirectPath: MKPolyline?
+    var directPath: MKPolyline?
 
     @IBOutlet weak var introTextView: UITextView!
     @IBOutlet weak var tpMapView: MKMapView!
@@ -26,9 +28,9 @@ class WCMapController: UIViewController {
             self.title = typhoon.chineseName
             WCHttpRequestManager.shareManager.loadTyphoonDetailWith(id: typhoon.id) { (typhoon, error) in
                 if let coordinateArray = typhoon?.coordinateArray {
-                    let polyLine = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
+                    weakSelf?.directPath = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
                     weakSelf?.tpMapView.setRegion(MKCoordinateRegion.init(center: coordinateArray.last!, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
-                    weakSelf?.tpMapView.addOverlay(polyLine)
+                    weakSelf?.tpMapView.addOverlay((weakSelf?.directPath)!)
                 }
                 if let details = typhoon?.details {
                     
@@ -41,11 +43,12 @@ class WCMapController: UIViewController {
                     let dateFormat = DateFormatter.init()
                     dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
                     for (index, detail) in details.enumerated() {
-                        let annotation = MKPointAnnotation()
+                        let annotation = WCPointAnnotation()
                         annotation.coordinate = CLLocationCoordinate2DMake(detail.latitude, detail.longitude)
                         let date = Date.init(timeIntervalSince1970: (Double(detail.ts)/1000.0))
                         annotation.title = dateFormat.string(from: date)
                         annotation.subtitle = "风速:\(detail.windSpeed), 移速:\(detail.moveSpeed), 方向:\(detail.directMsg)"
+                        annotation.typhoonDetail = detail
                         weakSelf?.tpMapView.addAnnotation(annotation)
                         if index == 0 {
                             dateFormat.dateFormat = "YYYY-MM-dd HH:mm"
@@ -62,10 +65,18 @@ class WCMapController: UIViewController {
 extension WCMapController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let render = MKPolylineRenderer.init(overlay: overlay)
-        render.lineWidth = 2.0
-        render.strokeColor = .red
-        return render
+        
+        if let directPath = self.directPath, directPath as MKOverlay === overlay {
+            let render = MKPolylineRenderer.init(overlay: overlay)
+            render.lineWidth = 3.0
+            render.strokeColor = .green
+            return render
+        }else {
+            let render = MKPolylineRenderer.init(overlay: overlay)
+            render.lineWidth = 2.0
+            render.strokeColor = .red
+            return render
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -81,6 +92,12 @@ extension WCMapController: MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let pointAnnotation = view.annotation as? WCPointAnnotation {
+            ZBLog("model = \(pointAnnotation.typhoonDetail!.directMsg)")
+        }
     }
     
 }

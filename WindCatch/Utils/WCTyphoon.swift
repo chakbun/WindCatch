@@ -65,16 +65,16 @@ class WCTyphoon {
         let detailJson = json[8] as? NSArray
         for detail in detailJson! {
             let array = detail as! NSArray
-            let dID = array[0] as! Int;
-            let time = array[1] as! String;
-            let ts = array[2] as! Int;
-            let type = array[3] as! String;
-            let longitude = array[4] as! Double;
-            let latitude = array[5] as! Double;
-            let press = array[6] as! Int;
-            let windspeed = array[7] as! Int;
-            let direct = array[8] as! String;
-            let moveSpeed = array[9] as! Int;
+            let dID = array[0] as! Int
+            let time = array[1] as! String
+            let ts = array[2] as! Int
+            let type = array[3] as! String
+            let longitude = array[4] as! Double
+            let latitude = array[5] as! Double
+            let press = array[6] as! Int
+            let windspeed = array[7] as! Int
+            let direct = array[8] as! String
+            let moveSpeed = array[9] as! Int
             
             let model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed)
             detailsList.append(model)

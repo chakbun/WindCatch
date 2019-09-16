@@ -23,6 +23,7 @@
 		DF29F6902322AD14009B3CBC /* WCTyphoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */; };
 		DF29F69523238EC3009B3CBC /* WCMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F69423238EC3009B3CBC /* WCMapController.swift */; };
 		DF29F6972325317D009B3CBC /* WCTyphoonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */; };
+		DF29F699232FD9F6009B3CBC /* WCPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTyphoon.swift; sourceTree = "<group>"; };
 		DF29F69423238EC3009B3CBC /* WCMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCMapController.swift; sourceTree = "<group>"; };
 		DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTyphoonDetail.swift; sourceTree = "<group>"; };
+		DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCPointAnnotation.swift; sourceTree = "<group>"; };
 		E541CA80344AF5AB279C8CFB /* Pods_WindCatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindCatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -227,6 +229,7 @@
 		DF29F691232356C1009B3CBC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF29F659231FF9C9009B3CBC /* ViewController.swift in Sources */,
+				DF29F699232FD9F6009B3CBC /* WCPointAnnotation.swift in Sources */,
 				DF29F68B231FFE37009B3CBC /* ZBGlobal.swift in Sources */,
 				DF29F6972325317D009B3CBC /* WCTyphoonDetail.swift in Sources */,
 				DF29F69523238EC3009B3CBC /* WCMapController.swift in Sources */,
