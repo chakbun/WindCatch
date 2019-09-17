@@ -30,7 +30,10 @@ class ViewController: UITableViewController {
             mapController.typhoon = sender as? WCTyphoon
         }
     }
-
+    
+    @IBAction func infoButtonAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "showWarningSegue", sender: nil)
+    }
 }
 
 // MARK: - TableView Data Source

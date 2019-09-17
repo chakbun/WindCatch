@@ -47,7 +47,14 @@
                             <outlet property="delegate" destination="9sM-AH-GVk" id="AuG-oo-Akq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Typhoons" id="9en-2B-dfb"/>
+                    <navigationItem key="navigationItem" title="Typhoons" id="9en-2B-dfb">
+                        <barButtonItem key="rightBarButtonItem" title="Warning" style="plain" id="n6b-aB-xsP">
+                            <connections>
+                                <action selector="infoButtonAction:" destination="9sM-AH-GVk" id="YI8-SR-RnF"/>
+                                <segue destination="WmW-mE-H4p" kind="show" identifier="showWarningSegue" id="tL9-aS-Z0V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="RkZ-nr-xo7" kind="show" identifier="showMapSegue" id="0B6-gM-Zp4"/>
                     </connections>
@@ -55,6 +62,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kp5-lh-7i2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="452.17391304347831" y="150.66964285714286"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Akj-1e-0Ry">
+            <objects>
+                <tableViewController id="WmW-mE-H4p" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eQ3-0s-rHz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lYm-j5-Par">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lYm-j5-Par" id="mMp-Q0-ijq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WmW-mE-H4p" id="taN-dq-lqU"/>
+                            <outlet property="delegate" destination="WmW-mE-H4p" id="ZjT-ZN-G9o"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0s-t1-9nZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="452" y="958"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="DFa-C8-7JV">
