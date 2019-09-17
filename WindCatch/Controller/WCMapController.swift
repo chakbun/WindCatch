@@ -29,7 +29,7 @@ class WCMapController: UIViewController {
             WCHttpRequestManager.shareManager.loadTyphoonDetailWith(id: typhoon.id) { (typhoon, error) in
                 if let coordinateArray = typhoon?.coordinateArray {
                     weakSelf?.directPath = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
-                    weakSelf?.tpMapView.setRegion(MKCoordinateRegion.init(center: coordinateArray.last!, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
+                    weakSelf?.tpMapView.setRegion(MKCoordinateRegion.init(center: coordinateArray.last!, span: MKCoordinateSpan.init(latitudeDelta: 50, longitudeDelta: 50)), animated: true)
                     weakSelf?.tpMapView.addOverlay((weakSelf?.directPath)!)
                 }
                 if let details = typhoon?.details {
@@ -68,13 +68,13 @@ extension WCMapController: MKMapViewDelegate {
         
         if let directPath = self.directPath, directPath as MKOverlay === overlay {
             let render = MKPolylineRenderer.init(overlay: overlay)
-            render.lineWidth = 3.0
-            render.strokeColor = .green
+            render.lineWidth = 2.0
+            render.strokeColor = .red
             return render
         }else {
             let render = MKPolylineRenderer.init(overlay: overlay)
             render.lineWidth = 2.0
-            render.strokeColor = .red
+            render.strokeColor = .yellow
             return render
         }
     }
@@ -96,11 +96,9 @@ extension WCMapController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let pointAnnotation = view.annotation as? WCPointAnnotation {
-            ZBLog("model = \(pointAnnotation.typhoonDetail!.directMsg)")
             if let predictDirectPath = self.predictDirectPath {
                 mapView.removeOverlay(predictDirectPath)
             }
-            
             if let predictArray = pointAnnotation.typhoonDetail?.predictArray {
                 var coordinateArray: [CLLocationCoordinate2D] = [CLLocationCoordinate2DMake(pointAnnotation.typhoonDetail!.latitude, pointAnnotation.typhoonDetail!.longitude)]
                 for detail in predictArray {
