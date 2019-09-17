@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="452.17391304347831" y="150.66964285714286"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Warning List Controller-->
         <scene sceneID="Akj-1e-0Ry">
             <objects>
-                <tableViewController id="WmW-mE-H4p" sceneMemberID="viewController">
+                <tableViewController id="WmW-mE-H4p" customClass="WCWarningListController" customModule="WindCatch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eQ3-0s-rHz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
