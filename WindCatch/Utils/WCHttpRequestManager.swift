@@ -12,6 +12,10 @@ import Alamofire
 class WCHttpRequestManager {
     static let shareManager: WCHttpRequestManager = WCHttpRequestManager()
     
+    func loadWarningListWith(completed: @escaping (AnyObject?, NSError?)->Void) -> Void {
+        
+    }
+    
     func loadTyphoonDetailWith(id: Int, completed: @escaping (WCTyphoon?, NSError?)->Void) -> Void {
         let actionName: String = "view_\(id)"
         Session.default.request("http://typhoon.nmc.cn/weatherservice/typhoon/jsons/\(actionName)", method: .get, encoding: URLEncoding.default).responseData { (response) in
