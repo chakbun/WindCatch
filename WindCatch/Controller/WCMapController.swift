@@ -102,12 +102,11 @@ extension WCMapController: MKMapViewDelegate {
             }
             
             if let predictArray = pointAnnotation.typhoonDetail?.predictArray {
-                var coordinateArray: [CLLocationCoordinate2D] = []
+                var coordinateArray: [CLLocationCoordinate2D] = [CLLocationCoordinate2DMake(pointAnnotation.typhoonDetail!.latitude, pointAnnotation.typhoonDetail!.longitude)]
                 for detail in predictArray {
                     coordinateArray.append(CLLocationCoordinate2D.init(latitude: detail.latitude, longitude: detail.longitude))
                 }
                 self.predictDirectPath = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
-                mapView.setRegion(MKCoordinateRegion.init(center: coordinateArray.last!, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
                 mapView.addOverlay(self.predictDirectPath!)
             }
         }
