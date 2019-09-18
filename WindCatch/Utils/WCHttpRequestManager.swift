@@ -32,14 +32,9 @@ class WCHttpRequestManager {
                         completed(nil, NSError.init(domain: "responseString 2 data error", code: -1, userInfo: nil))
                         return
                     }
-                    do {
-                        guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
-                            completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil))
-                            return
-                        }
-                    } catch {
-                        completed(nil, error as NSError);
-                    }
+                    let list = NSArray.init(object: responseData)
+//                    let list = Array(responseData)
+                    ZBLog("\(list)")
                     
                 }else {
                     
@@ -135,5 +130,15 @@ class WCHttpRequestManager {
             }
         }
     }
+}
 
+extension String {
+    
+    func count(string: String) -> Int {
+        return 0
+    }
+    
+    func toArray() throws -> [AnyObject]? {
+        return nil
+    }
 }
