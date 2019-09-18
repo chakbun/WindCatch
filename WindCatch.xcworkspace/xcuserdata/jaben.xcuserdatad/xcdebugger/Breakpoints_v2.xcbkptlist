@@ -9,29 +9,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WindCatch/Utils/WCHttpRequestManager.swift"
-            timestampString = "590334925.779312"
+            filePath = "WindCatch/Utils/WCTyphoon.swift"
+            timestampString = "590505543.733893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "loadTyphoonDetailWith(id:completed:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "updateFrom(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WindCatch/Utils/WCTyphoon.swift"
-            timestampString = "590426744.834372"
+            filePath = "WindCatch/Utils/WCHttpRequestManager.swift"
+            timestampString = "590505543.734055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "updateFrom(json:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "loadWarningListWith(completed:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

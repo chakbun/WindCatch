@@ -12,11 +12,46 @@ import Alamofire
 class WCHttpRequestManager {
     static let shareManager: WCHttpRequestManager = WCHttpRequestManager()
     
-    func loadWarningListWith(completed: @escaping (AnyObject?, NSError?)->Void) -> Void {
+    func loadWarningListWith(completed: @escaping (AnyObject?, Error?)->Void) -> Void {
+        //http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json
+        Session.default.request("http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json", method: .get, encoding: URLEncoding.default).responseData { (response) in
+            switch response.result {
+            case .success:
+                if let responseData = response.data {
+                    guard var responseString = String.init(data: responseData, encoding: .utf8) else {
+                        ZBLog("responseData is null")
+                        completed(nil, NSError.init(domain: "responseData is null", code: -1, userInfo: nil))
+                        return
+                    }
+                    ZBLog("rawJson\(responseString)")
+                    responseString = responseString.replacingOccurrences(of: "fetch_json_warning_json(", with: "")
+                    responseString = responseString.replacingOccurrences(of: ")", with: "")
+                    
+                    guard let responseData = responseString.data(using: .utf8) else {
+                        ZBLog("responseString 2 data error")
+                        completed(nil, NSError.init(domain: "responseString 2 data error", code: -1, userInfo: nil))
+                        return
+                    }
+                    do {
+                        guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
+                            completed(nil, NSError.init(domain: "Transform ResponseData Format Err", code: -1, userInfo: nil))
+                            return
+                        }
+                    } catch {
+                        completed(nil, error as NSError);
+                    }
+                    
+                }else {
+                    
+                }
+            case.failure(let error):
+                completed(nil, error as NSError);
+            }
+        }
         
     }
     
-    func loadTyphoonDetailWith(id: Int, completed: @escaping (WCTyphoon?, NSError?)->Void) -> Void {
+    func loadTyphoonDetailWith(id: Int, completed: @escaping (WCTyphoon?, Error?)->Void) -> Void {
         let actionName: String = "view_\(id)"
         Session.default.request("http://typhoon.nmc.cn/weatherservice/typhoon/jsons/\(actionName)", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
@@ -58,7 +93,7 @@ class WCHttpRequestManager {
         }
     }
     
-    func listTyphoonWith(completed: @escaping ([WCTyphoon]?, NSError?)->Void) -> Void {
+    func listTyphoonWith(completed: @escaping ([WCTyphoon]?, Error?)->Void) -> Void {
         Session.default.request("http://typhoon.nmc.cn/weatherservice/typhoon/jsons/list_default", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
             case .success:
