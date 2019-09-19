@@ -133,7 +133,6 @@ class WCHttpRequestManager {
 }
 
 extension String {
-    
     func count(string: String) -> Int {
         let subString = self.replacingOccurrences(of: string, with: "");
         guard string.count > 0 else {
@@ -142,7 +141,26 @@ extension String {
         return (self.count - subString.count) / string.count
     }
     
-    func toArray() throws -> [AnyObject]? {
-        return nil
+    func toArray() throws -> [Any] {
+        let openCount = self.count(string: "[")
+        let closeCount = self.count(string: "]")
+        
+        guard openCount == closeCount, openCount > 0, closeCount > 0 else {
+            throw NSError.init(domain: "Format ERR", code: -1, userInfo: nil)
+        }
+        
+        //self="[[1,3,4], [2,3,4]]"
+        let temp = self.replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "[", with: "")
+        if temp.count(string: "[") > 0 {
+            let tempArray = self.split(separator: ",")
+            var result: [Any] = []
+            for subTemp in tempArray {
+                let subSting: String = String(subTemp)
+                result.append(try subSting.toArray())
+            }
+            return result
+        }else {
+            return self.split(separator: ",")
+        }
     }
 }
