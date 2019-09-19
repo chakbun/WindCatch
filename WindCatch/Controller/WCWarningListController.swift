@@ -9,14 +9,19 @@
 import UIKit
 
 class WCWarningListController: UITableViewController {
+    
+    var warningList: [Array<Any>]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Warning"
         
+        weak var weakSelf = self
+
         WCHttpRequestManager.shareManager.loadWarningListWith { (list, error) in
             if let list = list {
-                
+                weakSelf?.warningList = list
+                weakSelf?.tableView.reloadData()
             }
         }
         
@@ -25,13 +30,17 @@ class WCWarningListController: UITableViewController {
 
 // MARK: - Table view data source
 extension WCWarningListController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.warningList!.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let info = self.warningList?[indexPath.row]
+        let cell = tableView .dequeueReusableCell(withIdentifier: "warningListCell", for: indexPath)
+        let titleLabel = cell.viewWithTag(1) as! UILabel
+        if let info = info {
+            titleLabel.text = info[0] as? String
+        }
+        return cell
     }
 }
