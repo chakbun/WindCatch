@@ -135,7 +135,11 @@ class WCHttpRequestManager {
 extension String {
     
     func count(string: String) -> Int {
-        return 0
+        let subString = self.replacingOccurrences(of: string, with: "");
+        guard string.count > 0 else {
+            return 0
+        }
+        return (self.count - subString.count) / string.count
     }
     
     func toArray() throws -> [AnyObject]? {
