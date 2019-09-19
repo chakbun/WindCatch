@@ -153,17 +153,22 @@ extension String {
             throw NSError.init(domain: "Format ERR", code: -1, userInfo: nil)
         }
         
-        //self="["1',"3","4"],["2","5","6"]"
         let temp = String(self.dropFirst().dropLast())
         if temp.count(string: "[") > 0 {
-            let tempArray = self.components(separatedBy: "],[")
+            let tempArray = temp.components(separatedBy: "], [")
             var result: [Any] = []
-            for subTemp in tempArray {
-                if subTemp.hasPrefix("[") {
+            for (index, subTemp) in tempArray.enumerated() {
+                if subTemp.hasPrefix("[") && index == 0 {
                     result.append(subTemp.dropFirst().components(separatedBy: ","))
+                }else if subTemp.hasSuffix("]") && index == tempArray.count-1 {
+                    result.append(subTemp.dropLast().components(separatedBy: ","))
+                }else {
+                    result.append(subTemp.components(separatedBy: ","))
                 }
             }
             return result
+        }else {
+            throw NSError.init(domain: "Format ERR", code: -1, userInfo: nil)
         }
     }
 }
