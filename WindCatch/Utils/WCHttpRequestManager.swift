@@ -149,18 +149,21 @@ extension String {
             throw NSError.init(domain: "Format ERR", code: -1, userInfo: nil)
         }
         
-        //self="[[1,3,4], [2,3,4]]"
-        let temp = self.replacingOccurrences(of: "]", with: "").replacingOccurrences(of: "[", with: "")
+        guard self.hasPrefix("["), self.hasSuffix("]") else {
+            throw NSError.init(domain: "Format ERR", code: -1, userInfo: nil)
+        }
+        
+        //self="["1',"3","4"],["2","5","6"]"
+        let temp = String(self.dropFirst().dropLast())
         if temp.count(string: "[") > 0 {
-            let tempArray = self.split(separator: ",")
+            let tempArray = self.components(separatedBy: "],[")
             var result: [Any] = []
             for subTemp in tempArray {
-                let subSting: String = String(subTemp)
-                result.append(try subSting.toArray())
+                if subTemp.hasPrefix("[") {
+                    result.append(subTemp.dropFirst().components(separatedBy: ","))
+                }
             }
             return result
-        }else {
-            return self.split(separator: ",")
         }
     }
 }
