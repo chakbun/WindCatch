@@ -15,7 +15,9 @@ class WCWarningListController: UITableViewController {
         self.title = "Warning"
         
         WCHttpRequestManager.shareManager.loadWarningListWith { (list, error) in
-            
+            if let list = list {
+                
+            }
         }
         
     }

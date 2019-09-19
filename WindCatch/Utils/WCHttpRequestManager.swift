@@ -12,7 +12,7 @@ import Alamofire
 class WCHttpRequestManager {
     static let shareManager: WCHttpRequestManager = WCHttpRequestManager()
     
-    func loadWarningListWith(completed: @escaping (AnyObject?, Error?)->Void) -> Void {
+    func loadWarningListWith(completed: @escaping ([Array<Any>]?, Error?)->Void) -> Void {
         //http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json
         Session.default.request("http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
@@ -32,12 +32,14 @@ class WCHttpRequestManager {
                         completed(nil, NSError.init(domain: "responseString 2 data error", code: -1, userInfo: nil))
                         return
                     }
-                    let list = NSArray.init(object: responseData)
-//                    let list = Array(responseData)
-                    ZBLog("\(list)")
-                    
+                    do {
+                        let result = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [Array<Any>]
+                        completed(result, nil)
+                    }catch let error as Error {
+                        completed(nil, error)
+                    }
                 }else {
-                    
+                    completed(nil, NSError.init(domain: "responseData is null", code: -1, userInfo: nil))
                 }
             case.failure(let error):
                 completed(nil, error as NSError);
