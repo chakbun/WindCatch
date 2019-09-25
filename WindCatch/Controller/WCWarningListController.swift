@@ -10,7 +10,7 @@ import UIKit
 
 class WCWarningListController: UITableViewController {
     
-    var warningList: [Array<Any>]? = []
+    var warningList: [Weather]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +38,9 @@ extension WCWarningListController {
         let info = self.warningList?[indexPath.row]
         let cell = tableView .dequeueReusableCell(withIdentifier: "warningListCell", for: indexPath)
         let titleLabel = cell.viewWithTag(1) as! UILabel
+        titleLabel.textColor = info?.color
         if let info = info {
-            titleLabel.text = info[0] as? String
+            titleLabel.text = "\(info.province)[\(info.city)]"
         }
         return cell
     }

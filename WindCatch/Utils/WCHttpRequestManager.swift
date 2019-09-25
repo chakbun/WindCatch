@@ -12,7 +12,7 @@ import Alamofire
 class WCHttpRequestManager {
     static let shareManager: WCHttpRequestManager = WCHttpRequestManager()
     
-    func loadWarningListWith(completed: @escaping ([Array<Any>]?, Error?)->Void) -> Void {
+    func loadWarningListWith(completed: @escaping ([Weather]?, Error?)->Void) -> Void {
         //http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json
         Session.default.request("http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
@@ -34,7 +34,16 @@ class WCHttpRequestManager {
                     }
                     do {
                         let result = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [Array<Any>]
-                        completed(result, nil)
+                        if let result = result {
+                            var weatherList: [Weather] = []
+                            for info in result {
+                                let weather = Weather(province: info[0] as! String, city: info[1] as! String, name: info[3] as! String, colorMsg: info[4] as! String, timeMsg: info[5] as! String)
+                                weatherList.append(weather)
+                            }
+                            completed(weatherList, nil)
+                        }else {
+                            completed([], nil)
+                        }
                     }catch let error as Error {
                         completed(nil, error)
                     }
