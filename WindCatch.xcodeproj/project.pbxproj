@@ -25,6 +25,7 @@
 		DF29F6972325317D009B3CBC /* WCTyphoonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */; };
 		DF29F699232FD9F6009B3CBC /* WCPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */; };
 		DF29F69B233133D1009B3CBC /* WCWarningListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F69A233133D1009B3CBC /* WCWarningListController.swift */; };
+		DFE57704233BA3AA0017DA35 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE57703233BA3AA0017DA35 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTyphoonDetail.swift; sourceTree = "<group>"; };
 		DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCPointAnnotation.swift; sourceTree = "<group>"; };
 		DF29F69A233133D1009B3CBC /* WCWarningListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWarningListController.swift; sourceTree = "<group>"; };
+		DFE57703233BA3AA0017DA35 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E541CA80344AF5AB279C8CFB /* Pods_WindCatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindCatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 				DF29F68D2322A728009B3CBC /* WCHttpRequestManager.swift */,
 				DF29F68F2322AD14009B3CBC /* WCTyphoon.swift */,
 				DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */,
+				DFE57703233BA3AA0017DA35 /* Weather.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				DF29F659231FF9C9009B3CBC /* ViewController.swift in Sources */,
 				DF29F699232FD9F6009B3CBC /* WCPointAnnotation.swift in Sources */,
 				DF29F68B231FFE37009B3CBC /* ZBGlobal.swift in Sources */,
+				DFE57704233BA3AA0017DA35 /* Weather.swift in Sources */,
 				DF29F6972325317D009B3CBC /* WCTyphoonDetail.swift in Sources */,
 				DF29F69523238EC3009B3CBC /* WCMapController.swift in Sources */,
 				DF29F657231FF9C9009B3CBC /* AppDelegate.swift in Sources */,
