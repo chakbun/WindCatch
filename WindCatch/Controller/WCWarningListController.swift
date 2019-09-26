@@ -38,7 +38,8 @@ extension WCWarningListController {
         let info = self.warningList?[indexPath.row]
         let cell = tableView .dequeueReusableCell(withIdentifier: "warningListCell", for: indexPath)
         let titleLabel = cell.viewWithTag(1) as! UILabel
-        titleLabel.textColor = info?.color
+        let colorView = cell.viewWithTag(2)
+        colorView?.backgroundColor = info?.color
         if let info = info {
             titleLabel.text = "\(info.province)[\(info.city)]"
         }
