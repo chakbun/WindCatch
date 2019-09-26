@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class WCWarningListController: UITableViewController {
     
@@ -39,6 +40,9 @@ extension WCWarningListController {
         let cell = tableView .dequeueReusableCell(withIdentifier: "warningListCell", for: indexPath)
         let titleLabel = cell.viewWithTag(1) as! UILabel
         let colorView = cell.viewWithTag(2)
+        let nameImageView = cell.viewWithTag(3) as! UIImageView
+        let url = URL(string: "http://typhoon.nmc.cn/images/icon_n/\(info?.imageName ?? "")")!
+        nameImageView.af_setImage(withURL: url)
         colorView?.backgroundColor = info?.color
         if let info = info {
             titleLabel.text = "\(info.province)[\(info.city)]"

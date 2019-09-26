@@ -14,6 +14,7 @@ struct Weather {
     var name: String
     var colorMsg: String
     var timeMsg: String
+    var imageName: String
     
     var color: UIColor {
         switch colorMsg {

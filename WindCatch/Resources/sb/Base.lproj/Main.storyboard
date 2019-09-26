@@ -98,14 +98,21 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-KM-RmX">
+                                            <rect key="frame" x="373" y="16" width="21" height="21"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="moH-8o-vbl" firstAttribute="leading" secondItem="mMp-Q0-ijq" secondAttribute="leadingMargin" id="CRS-J7-ban"/>
+                                        <constraint firstItem="gQX-KM-RmX" firstAttribute="width" secondItem="moH-8o-vbl" secondAttribute="width" id="CUN-jg-B0z"/>
+                                        <constraint firstItem="gQX-KM-RmX" firstAttribute="centerY" secondItem="moH-8o-vbl" secondAttribute="centerY" id="Do6-Df-gj5"/>
                                         <constraint firstItem="sqV-5p-DaR" firstAttribute="leading" secondItem="moH-8o-vbl" secondAttribute="trailing" constant="5" id="GOR-8g-Prv"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="sqV-5p-DaR" secondAttribute="bottom" constant="5" id="IBP-nL-qJx"/>
                                         <constraint firstItem="sqV-5p-DaR" firstAttribute="top" secondItem="mMp-Q0-ijq" secondAttribute="topMargin" constant="5" id="R4R-zT-ris"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="sqV-5p-DaR" secondAttribute="trailing" id="dXW-fQ-cGy"/>
                                         <constraint firstItem="moH-8o-vbl" firstAttribute="centerY" secondItem="sqV-5p-DaR" secondAttribute="centerY" id="iV1-RR-PHt"/>
+                                        <constraint firstItem="gQX-KM-RmX" firstAttribute="height" secondItem="moH-8o-vbl" secondAttribute="height" id="mIQ-DY-zDZ"/>
+                                        <constraint firstItem="gQX-KM-RmX" firstAttribute="trailing" secondItem="mMp-Q0-ijq" secondAttribute="trailingMargin" id="r8E-Np-Ys5"/>
                                         <constraint firstItem="moH-8o-vbl" firstAttribute="height" secondItem="sqV-5p-DaR" secondAttribute="height" id="sfH-rZ-310"/>
                                     </constraints>
                                 </tableViewCellContentView>
