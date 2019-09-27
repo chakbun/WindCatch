@@ -46,6 +46,7 @@ extension WCWarningListController {
         if let info = info {
             titleLabel.text = "\(info.province) \(info.city) [\(info.name)]"
         }
+        cell.selectionStyle = .none
         return cell
     }
 }
