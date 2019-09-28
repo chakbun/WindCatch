@@ -71,14 +71,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="warningListCell" id="lYm-j5-Par">
-                                <rect key="frame" x="0.0" y="28" width="414" height="53"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="53.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lYm-j5-Par" id="mMp-Q0-ijq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="53.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moH-8o-vbl">
-                                            <rect key="frame" x="20" y="16" width="21" height="21"/>
+                                            <rect key="frame" x="20" y="16" width="21.5" height="21.5"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="moH-8o-vbl" secondAttribute="height" multiplier="1:1" id="7uw-5V-NfH"/>
@@ -93,7 +93,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqV-5p-DaR">
-                                            <rect key="frame" x="46" y="16" width="348" height="21"/>
+                                            <rect key="frame" x="46.5" y="16" width="347.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -124,24 +124,61 @@
             </objects>
             <point key="canvasLocation" x="450.72463768115944" y="957.58928571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--Warning Detail Controller-->
         <scene sceneID="YRJ-7w-joM">
             <objects>
-                <viewController id="BiF-sk-9hA" sceneMemberID="viewController">
+                <viewController id="BiF-sk-9hA" customClass="WarningDetailController" customModule="WindCatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pl0-dC-rv6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VZs-vH-LHq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="辽宁省 大连市 [大雾]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIw-sF-xWF">
+                                <rect key="frame" x="20" y="108" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OZB-dz-1bk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019年09月28日20时28分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdC-ge-6J6">
+                                <rect key="frame" x="20" y="143" width="374" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="iI8-oC-Kjg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大连市气象台2019年09月28日20时28分发布大雾橙色预警信号：预计28日20时到29日10时，大连地区及沿岸海域将出现能见度小于200米的浓雾天气，请注意防范。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-Bt-Oy6">
+                                <rect key="frame" x="20" y="175" width="374" height="81.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Q9J-aX-sIF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kgR-4j-poc">
+                                <rect key="frame" x="20" y="306.5" width="374" height="535.5"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wUo-zT-zHs" firstAttribute="bottom" secondItem="kgR-4j-poc" secondAttribute="bottom" constant="20" id="56C-Ta-6Lr"/>
+                            <constraint firstItem="wUo-zT-zHs" firstAttribute="trailing" secondItem="kIw-sF-xWF" secondAttribute="trailing" constant="20" id="7Sg-E8-APR"/>
+                            <constraint firstItem="wUo-zT-zHs" firstAttribute="trailing" secondItem="kgR-4j-poc" secondAttribute="trailing" constant="20" id="Sac-Gr-jc8"/>
+                            <constraint firstItem="kIw-sF-xWF" firstAttribute="leading" secondItem="wUo-zT-zHs" secondAttribute="leading" constant="20" id="UTv-Yg-djc"/>
+                            <constraint firstItem="kIw-sF-xWF" firstAttribute="top" secondItem="wUo-zT-zHs" secondAttribute="top" constant="20" id="Vjm-sz-JfL"/>
+                            <constraint firstItem="NdC-ge-6J6" firstAttribute="trailing" secondItem="kIw-sF-xWF" secondAttribute="trailing" id="W49-ni-9Jd"/>
+                            <constraint firstItem="NdC-ge-6J6" firstAttribute="top" secondItem="kIw-sF-xWF" secondAttribute="bottom" constant="5" id="aYa-5a-dd6"/>
+                            <constraint firstItem="Dk0-Bt-Oy6" firstAttribute="leading" secondItem="kIw-sF-xWF" secondAttribute="leading" id="bh6-Yr-Dia"/>
+                            <constraint firstItem="Dk0-Bt-Oy6" firstAttribute="trailing" secondItem="kIw-sF-xWF" secondAttribute="trailing" id="e8h-o1-Y0S"/>
+                            <constraint firstItem="Dk0-Bt-Oy6" firstAttribute="top" secondItem="NdC-ge-6J6" secondAttribute="bottom" constant="10" id="iaF-L5-Twz"/>
+                            <constraint firstItem="NdC-ge-6J6" firstAttribute="leading" secondItem="kIw-sF-xWF" secondAttribute="leading" id="jbI-u9-cUt"/>
+                            <constraint firstItem="kgR-4j-poc" firstAttribute="leading" secondItem="wUo-zT-zHs" secondAttribute="leading" constant="20" id="k5C-ph-otG"/>
+                            <constraint firstItem="kgR-4j-poc" firstAttribute="top" secondItem="Dk0-Bt-Oy6" secondAttribute="bottom" constant="50" id="yxm-QP-uPQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wUo-zT-zHs"/>
                     </view>
                     <navigationItem key="navigationItem" id="XYe-Hb-GQ8"/>
