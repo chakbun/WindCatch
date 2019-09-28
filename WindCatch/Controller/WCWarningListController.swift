@@ -27,7 +27,13 @@ class WCWarningListController: UITableViewController {
                 weakSelf?.tableView.reloadData()
             }
         }
-        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        if controller is WarningDetailController {
+            let mapController: WarningDetailController = controller as! WarningDetailController
+            mapController.weather = sender as? Weather
+        }
     }
 }
 
@@ -50,3 +56,12 @@ extension WCWarningListController {
         return cell
     }
 }
+
+// MARK: - TableView Delegate
+extension WCWarningListController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let info = self.warningList?[indexPath.row]
+        self.performSegue(withIdentifier: "showWarningDetailSegue", sender: info)
+    }
+}
+

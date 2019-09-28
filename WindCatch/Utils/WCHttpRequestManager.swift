@@ -37,7 +37,7 @@ class WCHttpRequestManager {
                         if let result = result {
                             var weatherList: [Weather] = []
                             for info in result {
-                                let weather = Weather(province: info[0] as! String, city: info[1] as! String, name: info[3] as! String, colorMsg: info[4] as! String, timeMsg: info[5] as! String, imageName: info[6] as! String, info: info[9] as! String, latitude: info[7] as! Double, longitude: info[8] as! Double)
+                                let weather = Weather(province: info[0] as! String, city: info[1] as! String, name: info[3] as! String, colorMsg: info[4] as! String, timeMsg: info[5] as! String, imageName: info[6] as! String, info: info[9] as! String, latitude: Double(info[7] as! String)!, longitude: Double(info[8] as! String)!)
                                 weatherList.append(weather)
                             }
                             completed(weatherList, nil)

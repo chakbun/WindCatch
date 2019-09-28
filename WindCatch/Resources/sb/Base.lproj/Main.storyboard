@@ -117,7 +117,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="BiF-sk-9hA" kind="show" id="exG-a8-9sz"/>
+                        <segue destination="BiF-sk-9hA" kind="show" identifier="showWarningDetailSegue" id="exG-a8-9sz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0s-t1-9nZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

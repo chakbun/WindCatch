@@ -16,7 +16,7 @@ class WarningDetailController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var detailMapView: MKMapView!
     
-    let weather: Weather? = nil
+    var weather: Weather? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
