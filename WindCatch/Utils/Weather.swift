@@ -15,6 +15,9 @@ struct Weather {
     var colorMsg: String
     var timeMsg: String
     var imageName: String
+    var info: String
+    var latitude: Double
+    var longitude: Double
     
     var color: UIColor {
         switch colorMsg {

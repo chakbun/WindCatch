@@ -182,6 +182,12 @@
                         <viewLayoutGuide key="safeArea" id="wUo-zT-zHs"/>
                     </view>
                     <navigationItem key="navigationItem" id="XYe-Hb-GQ8"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="NdC-ge-6J6" id="gQe-vA-k40"/>
+                        <outlet property="detailMapView" destination="kgR-4j-poc" id="uex-Do-o6E"/>
+                        <outlet property="infoLabel" destination="Dk0-Bt-Oy6" id="SNM-80-Nt6"/>
+                        <outlet property="provincenLabel" destination="kIw-sF-xWF" id="Hg9-4j-WxI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Aw-sk-S5K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
