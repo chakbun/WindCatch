@@ -25,6 +25,10 @@ class WarningDetailController: UIViewController {
             provincenLabel.text = "\(weather.province) \(weather.city) [\(weather.name)]"
             dateLabel.text = weather.timeMsg
             infoLabel.text = weather.info
+            
+            let center = CLLocationCoordinate2DMake(weather.latitude, weather.longitude)
+            detailMapView.setRegion(MKCoordinateRegion.init(center: center, span: MKCoordinateSpan.init(latitudeDelta: 5, longitudeDelta: 5)), animated: true)
+
         }
     }
 
