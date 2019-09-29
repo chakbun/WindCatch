@@ -29,6 +29,12 @@ class WarningDetailController: UIViewController {
             let center = CLLocationCoordinate2DMake(weather.latitude, weather.longitude)
             detailMapView.setRegion(MKCoordinateRegion.init(center: center, span: MKCoordinateSpan.init(latitudeDelta: 5, longitudeDelta: 5)), animated: true)
 
+            if weather.latitude != -999.0 && weather.longitude != -999.0 {
+                let annotation = WCPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2DMake(weather.latitude, weather.longitude)
+                annotation.title = weather.city
+                detailMapView.addAnnotation(annotation)
+            }
         }
     }
 
