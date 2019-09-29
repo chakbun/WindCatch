@@ -14,6 +14,7 @@ class WCHttpRequestManager {
     
     func loadWarningListWith(completed: @escaping ([Weather]?, Error?)->Void) -> Void {
         //http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json
+        Session.default
         Session.default.request("http://typhoon.nmc.cn/weatherservice/fetch_json/warning/json", method: .get, encoding: URLEncoding.default).responseData { (response) in
             switch response.result {
             case .success:
@@ -37,7 +38,11 @@ class WCHttpRequestManager {
                         if let result = result {
                             var weatherList: [Weather] = []
                             for info in result {
-                                let weather = Weather(province: info[0] as! String, city: info[1] as! String, name: info[3] as! String, colorMsg: info[4] as! String, timeMsg: info[5] as! String, imageName: info[6] as! String, info: info[9] as! String, latitude: Double(info[7] as! String)!, longitude: Double(info[8] as! String)!)
+                                
+                                let latitude: Double = info[7] is NSNull ? -999.0 : Double(info[7] as! String)!
+                                let logitude: Double = info[8] is NSNull ? -999.0 : Double(info[8] as! String)!
+
+                                let weather = Weather(province: info[0] as! String, city: info[1] as! String, name: info[3] as! String, colorMsg: info[4] as! String, timeMsg: info[5] as! String, imageName: info[6] as! String, info: info[9] as! String, latitude: latitude, longitude: logitude)
                                 weatherList.append(weather)
                             }
                             completed(weatherList, nil)
