@@ -46,14 +46,14 @@ extension ViewController {
         let typhoonModel = self.typhoonList?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "WCTyphoonListCell", for: indexPath)
         let nameLabel: UILabel = cell.viewWithTag(1) as! UILabel
-        let stateView: UIView = cell.viewWithTag(2) as! UIView
+        let stateView: UIView = cell.viewWithTag(2)!
         let nameText = typhoonModel?.chineseName ?? "Unknow"
         let indexText = typhoonModel?.noString ?? "Unknow"
         nameLabel.text = nameText + "[\(indexText)]"
         if typhoonModel?.status == "start" {
-            stateView.backgroundColor = .green
+            stateView.backgroundColor = UIColor(red: 100/255.0, green: 202/255.0, blue: 87/255.0, alpha: 1.0)
         }else {
-            stateView.backgroundColor = .red
+            stateView.backgroundColor = UIColor(red: 237/255.0, green: 107/255.0, blue: 96/255.0, alpha: 1.0)
         }
         return cell
     }
