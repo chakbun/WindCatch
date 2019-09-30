@@ -24,18 +24,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbm-8Z-c7M">
+                                            <rect key="frame" x="8" y="19" width="32" height="32"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Wbm-8Z-c7M" secondAttribute="height" multiplier="1:1" id="6D9-Zb-Yfe"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1.0f"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-FQ-fHW">
-                                            <rect key="frame" x="28" y="19" width="358" height="32"/>
+                                            <rect key="frame" x="45" y="19" width="341" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="FRa-FQ-fHW" firstAttribute="leading" secondItem="Wbm-8Z-c7M" secondAttribute="trailing" constant="5" id="0FS-rz-h12"/>
                                         <constraint firstItem="FRa-FQ-fHW" firstAttribute="top" secondItem="pUy-QV-Que" secondAttribute="topMargin" constant="8" id="1D5-PJ-bmL"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="FRa-FQ-fHW" secondAttribute="bottom" constant="8" id="O7B-76-9xP"/>
+                                        <constraint firstItem="Wbm-8Z-c7M" firstAttribute="height" secondItem="FRa-FQ-fHW" secondAttribute="height" id="VEM-tJ-QAy"/>
+                                        <constraint firstItem="Wbm-8Z-c7M" firstAttribute="centerY" secondItem="FRa-FQ-fHW" secondAttribute="centerY" id="j4Y-yW-UzQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FRa-FQ-fHW" secondAttribute="trailing" constant="8" id="uo3-uR-0Ef"/>
-                                        <constraint firstItem="FRa-FQ-fHW" firstAttribute="leading" secondItem="pUy-QV-Que" secondAttribute="leadingMargin" constant="8" id="up4-yf-mP9"/>
+                                        <constraint firstItem="Wbm-8Z-c7M" firstAttribute="leading" secondItem="pUy-QV-Que" secondAttribute="leading" constant="8" id="wcE-62-yt7"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

@@ -46,9 +46,15 @@ extension ViewController {
         let typhoonModel = self.typhoonList?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "WCTyphoonListCell", for: indexPath)
         let nameLabel: UILabel = cell.viewWithTag(1) as! UILabel
+        let stateView: UIView = cell.viewWithTag(2) as! UIView
         let nameText = typhoonModel?.chineseName ?? "Unknow"
         let indexText = typhoonModel?.noString ?? "Unknow"
         nameLabel.text = nameText + "[\(indexText)]"
+        if typhoonModel?.status == "start" {
+            stateView.backgroundColor = .green
+        }else {
+            stateView.backgroundColor = .red
+        }
         return cell
     }
 }
