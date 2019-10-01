@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
         weak var weakSelf = self
         WCHttpRequestManager.shareManager.listTyphoonWith { (typhoons, error) in
             weakSelf?.typhoonList = typhoons
