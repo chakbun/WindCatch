@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbm-8Z-c7M">
-                                            <rect key="frame" x="8" y="19" width="32" height="32"/>
+                                            <rect key="frame" x="20" y="19" width="32" height="32"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Wbm-8Z-c7M" secondAttribute="height" multiplier="1:1" id="6D9-Zb-Yfe"/>
@@ -40,7 +40,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-FQ-fHW">
-                                            <rect key="frame" x="45" y="19" width="341" height="32"/>
+                                            <rect key="frame" x="57" y="19" width="329" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                         <constraint firstItem="Wbm-8Z-c7M" firstAttribute="height" secondItem="FRa-FQ-fHW" secondAttribute="height" id="VEM-tJ-QAy"/>
                                         <constraint firstItem="Wbm-8Z-c7M" firstAttribute="centerY" secondItem="FRa-FQ-fHW" secondAttribute="centerY" id="j4Y-yW-UzQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FRa-FQ-fHW" secondAttribute="trailing" constant="8" id="uo3-uR-0Ef"/>
-                                        <constraint firstItem="Wbm-8Z-c7M" firstAttribute="leading" secondItem="pUy-QV-Que" secondAttribute="leading" constant="8" id="wcE-62-yt7"/>
+                                        <constraint firstItem="Wbm-8Z-c7M" firstAttribute="leading" secondItem="pUy-QV-Que" secondAttribute="leading" constant="20" id="wcE-62-yt7"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
