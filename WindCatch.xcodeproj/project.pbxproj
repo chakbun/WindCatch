@@ -25,6 +25,7 @@
 		DF29F6972325317D009B3CBC /* WCTyphoonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */; };
 		DF29F699232FD9F6009B3CBC /* WCPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */; };
 		DF29F69B233133D1009B3CBC /* WCWarningListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29F69A233133D1009B3CBC /* WCWarningListController.swift */; };
+		DFBE80CF2410E5DC0004FA0B /* 111.png in Resources */ = {isa = PBXBuildFile; fileRef = DFBE80CE2410E5DC0004FA0B /* 111.png */; };
 		DFE57704233BA3AA0017DA35 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE57703233BA3AA0017DA35 /* Weather.swift */; };
 		DFF3C01D233F990200E8B855 /* WarningDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF3C01C233F990200E8B855 /* WarningDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		DF29F6962325317D009B3CBC /* WCTyphoonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTyphoonDetail.swift; sourceTree = "<group>"; };
 		DF29F698232FD9F6009B3CBC /* WCPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCPointAnnotation.swift; sourceTree = "<group>"; };
 		DF29F69A233133D1009B3CBC /* WCWarningListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWarningListController.swift; sourceTree = "<group>"; };
+		DFBE80CE2410E5DC0004FA0B /* 111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 111.png; sourceTree = "<group>"; };
 		DFE57703233BA3AA0017DA35 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		DFF3C01C233F990200E8B855 /* WarningDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningDetailController.swift; sourceTree = "<group>"; };
 		E541CA80344AF5AB279C8CFB /* Pods_WindCatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindCatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 		DF29F685231FFA6D009B3CBC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DFBE80CE2410E5DC0004FA0B /* 111.png */,
 				DF29F687231FFA9F009B3CBC /* sb */,
 			);
 			path = Resources;
@@ -354,6 +357,7 @@
 				DF29F661231FF9C9009B3CBC /* LaunchScreen.storyboard in Resources */,
 				DF29F65E231FF9C9009B3CBC /* Assets.xcassets in Resources */,
 				DF29F689231FFAD3009B3CBC /* README.md in Resources */,
+				DFBE80CF2410E5DC0004FA0B /* 111.png in Resources */,
 				DF29F65C231FF9C9009B3CBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

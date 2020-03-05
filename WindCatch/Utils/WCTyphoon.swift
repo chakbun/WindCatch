@@ -78,20 +78,25 @@ class WCTyphoon {
             
             var model = WCTyphoonDetail.init(id: dID, time: time, ts: ts, type: type, longitude: longitude, latitude: latitude, direct: direct, airPress: press, windSpeed: windspeed, moveSpeed: moveSpeed, predictArray: [])
             
-            let predictJson = array[11] as! NSDictionary
-            let predictArray = predictJson["BABJ"] as! NSArray
-            for predictInfo in predictArray {
-                let predictModel = predictInfo as! NSArray
-                let hourLater = predictModel[0] as! Int
-                let preLongitude = predictModel[2] as! Double
-                let preLatitude = predictModel[3] as! Double
-                let prePress = predictModel[4] as! Int
-                let preWindspeed = predictModel[5] as? Int ?? 1
-                let preType = predictModel[7] as! String
-                let preModel = WCTyphoonDetail.init(id: nil, time: "", ts: nil, type: preType, longitude: preLongitude, latitude: preLatitude, direct: nil, airPress: prePress, windSpeed: preWindspeed, moveSpeed: nil, predictArray: nil)
-                model.predictArray?.append(preModel)
+            let predictJsonOp = array[11] as? NSDictionary
+            
+            if let predictJson = predictJsonOp {
+                let predictArray = predictJson["BABJ"] as! NSArray
+                for predictInfo in predictArray {
+                    let predictModel = predictInfo as! NSArray
+                    let hourLater = predictModel[0] as! Int
+                    let preLongitude = predictModel[2] as! Double
+                    let preLatitude = predictModel[3] as! Double
+                    let prePress = predictModel[4] as! Int
+                    let preWindspeed = predictModel[5] as? Int ?? 1
+                    let preType = predictModel[7] as! String
+                    let preModel = WCTyphoonDetail.init(id: nil, time: "", ts: nil, type: preType, longitude: preLongitude, latitude: preLatitude, direct: nil, airPress: prePress, windSpeed: preWindspeed, moveSpeed: nil, predictArray: nil)
+                    model.predictArray?.append(preModel)
+                }
+                detailsList.append(model)
+            }else {
+                ZBLog("predictJsonOp is null")
             }
-            detailsList.append(model)
         }
         self.details = detailsList
     }
